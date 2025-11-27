@@ -1,0 +1,56 @@
+services:
+  php:
+    build:
+      context: ./docker/php
+    container_name: m12_php
+    env_file:
+      - .env
+    volumes:
+      - ${PROJECT_PATH}:/var/www/html
+    ports:
+      - "${PHP_FPM_PORT:-9000}:9000"
+    depends_on:
+      - postgres
+      - redis
+
+  nginx:
+    image: nginx:1.25
+    container_name: m12_nginx
+    env_file:
+      - .env
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    volumes:
+      - ${PROJECT_PATH}:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+
+  postgres:
+    image: postgres:16
+    container_name: m12_postgres
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  redis:
+    image: redis:7
+    container_name: m12_redis
+    env_file:
+      - .env
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
