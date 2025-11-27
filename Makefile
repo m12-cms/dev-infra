@@ -24,13 +24,16 @@ ps:
 	$(DC) ps
 
 sh-php:
-	$(DC) exec php sh
+	$(DC) exec php bash
 
 sh-nginx:
-	$(DC) exec nginx sh
+	$(DC) exec nginx bash
 
 sh-postgres:
-	$(DC) exec postgres sh
+	$(DC) exec postgres bash
 
 sh-redis:
-	$(DC) exec redis sh
+	$(DC) exec redis bash
+
+psql:
+	$(DC) exec postgres psql -U $(POSTGRES_USER) -d $(POSTGRES_DB)
