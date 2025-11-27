@@ -1,6 +1,17 @@
 blank_issues_enabled: false
 
+issue_templates:
+  - name: 🐞 Bug report
+    description: Report a reproducible bug.
+    file: bug_report.md
+  - name: ✨ Feature request
+    description: Suggest a new feature or improvement.
+    file: feature_request.md
+  - name: ❓ General question
+    description: Ask a general question about the project.
+    file: general_question.md
+
 contact_links:
-  - name: ❓ General Discussion / Questions
+  - name: 💬 General Discussion / Questions
     url: https://github.com/m12/dev-infra/discussions
-    about: Please use GitHub Discussions for general questions or ideas.
+    about: Please use GitHub Discussions for open-ended questions or ideas.
