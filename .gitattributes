@@ -1,0 +1,24 @@
+# Normalize line endings
+git config core.autocrlf false
+
+
+# Text files
+git* text=auto
+
+
+# Force LF for certain files
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+Makefile text eol=lf
+
+
+# Treat generated files as binary
+*.png binary
+*.jpg binary
+*.mp4 binary
+
+
+# Avoid merge conflicts for lock files
+composer.lock merge=union
+package-lock.json merge=union
