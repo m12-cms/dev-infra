@@ -41,17 +41,6 @@ services:
       - redis
 
   # --------------------------------------------------------
-  # Quasar: APP (build → dist mounted to nginx)
-  # --------------------------------------------------------
-  app-build:
-    build:
-      context: ./docker/app
-    container_name: m12_app_build
-    volumes:
-      - ../app:/app
-      - ./docker/app/dist:/dist
-
-  # --------------------------------------------------------
   # NGINX Reverse Proxy
   # --------------------------------------------------------
   nginx:
@@ -72,8 +61,6 @@ services:
     depends_on:
       - admin
       - www
-      - app-build
-
   # --------------------------------------------------------
   # POSTGRES
   # --------------------------------------------------------
