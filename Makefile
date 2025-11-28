@@ -23,16 +23,19 @@ logs:
 ps:
 	$(DC) ps
 
-sh-php:
-	$(DC) exec php bash
+admin:
+	$(DC) exec admin bash
 
-sh-nginx:
+www:
+	$(DC) exec www bash
+
+nginx:
 	$(DC) exec nginx bash
 
-sh-postgres:
+postgres:
 	$(DC) exec postgres bash
 
-sh-redis:
+redis:
 	$(DC) exec redis bash
 
 psql:
