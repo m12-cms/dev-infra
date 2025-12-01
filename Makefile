@@ -53,9 +53,10 @@ analyse-admin:
 analyse-www:
 	$(DC) exec www composer stan
 
+test-admin:
+	$(DC) exec admin ./artisan test
+
 check-admin:
 	$(DC) exec admin composer pint
 	$(DC) exec admin composer stan
-
-test-admin:
 	$(DC) exec admin ./artisan test
