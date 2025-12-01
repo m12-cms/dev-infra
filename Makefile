@@ -46,3 +46,13 @@ pint-admin:
 
 pint-www:
 	$(DC) exec www composer pint
+
+analyse-admin:
+	$(DC) exec admin composer stan
+
+analyse-www:
+	$(DC) exec www composer stan
+
+check-admin:
+	$(DC) exec admin composer pint
+	$(DC) exec admin composer stan
