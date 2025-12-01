@@ -40,3 +40,9 @@ redis:
 
 psql:
 	$(DC) exec postgres psql -U $(POSTGRES_USER) -d $(POSTGRES_DB)
+
+pint-admin:
+	$(DC) exec admin composer pint
+
+pint-www:
+	$(DC) exec www composer pint
